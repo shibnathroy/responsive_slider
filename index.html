@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Slider plugin</title>
+	<link rel="stylesheet" href="slider.css">
+</head>
+<body>
+
+
+	<section style="max-width:1000px; margin:30px auto;">
+		<ul id="slider">
+			<li><img src="images/slide-01.jpg" alt=""></li>
+			<li><img src="images/slide-02.jpg" alt=""></li>
+			<li><img src="images/slide-03.jpg" alt=""></li>
+			<li><img src="images/slide-04.jpeg" alt=""></li>
+			<li><img src="images/slide-05.jpg" alt=""></li>
+			<li><img src="images/slide-06.jpg" alt=""></li>
+		</ul>
+		<a href="#" id="movePrev">Move Previous</a>
+		<a href="#" id="moveNext">Move Next</a>
+	</section>
+
+
+	<script src="jquery-2.2.2.min.js"></script>
+	<script src="responsive_slide.jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#slider').responsiveSlide({
+				prevButton: "#movePrev",
+				nextButton: "#moveNext"
+			});
+		});
+	</script>
+</body>
+</html>
