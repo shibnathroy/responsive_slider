@@ -23,7 +23,10 @@
 		  /* Cache selectors */
 		  var ul_selector = $this;
 		  var ul_children = ul_selector.find('li');
-		  var moveValue = slideWidth;
+		  var moveValue = 0;
+		  var currentSlide = 1;
+		  var _slideInterval = settings.interval || 3000; 
+		  var _transitionSpeed = settings.speed || 500;
 
 
 	   	  // wrap a div around the ul
@@ -46,46 +49,60 @@
 	  	  var number_of_slide = ul_children.length;
 	  	  ul_selector.width(length_of_ul);
 
+	  	  var _animateCaption = function(){
+	  	  	   ul_children.find('.res_caption').removeClass('res_active_caption');
+	  	  	   ul_children.eq(currentSlide - 1).find('.res_caption').delay(_transitionSpeed).addClass('res_active_caption');
+	  	  };
+
+	  	  var _moveSlider = function(marginValue){
+	  	  	 ul_selector.animate({
+	  	  	  	 "margin-left": -marginValue
+	  	  	  }, _transitionSpeed);
+	  	  }
+
 	  	  var _moveNext = function(){
+
+	  	  	  ++currentSlide;
 
 	  	  	  if(moveValue == (length_of_ul - slideWidth)){
 	  	  	  	  moveValue = 0;
+	  	  	  	  currentSlide = 1;
 	  	  	  }
 	  	  	  else{
 	  	  	  	 moveValue = moveValue + slideWidth;
 	  	  	  }
-	  	  	  ul_selector.animate({
-	  	  	  	 "margin-left": -moveValue
-	  	  	  });
 
-	  	  	  
+	  	  	 _moveSlider(moveValue);
+
+	  	  	  _animateCaption(currentSlide);
 	  	  	 
 	  	  };
 
 	  	  var _movePrev = function(){
 
+	  	  	  --currentSlide;
+
 	  	  	  if(moveValue <= slideWidth){
 	  	  	  	  moveValue = 0;
+	  	  	  	  currentSlide = 1;
 	  	  	  }
 	  	  	  else{
 	  	  	  	 moveValue = moveValue - slideWidth;
 	  	  	  }
-	  	  	  ul_selector.animate({
-	  	  	  	 "margin-left": -moveValue
-	  	  	  });
+	  	  	  _moveSlider(moveValue);
 
-	  	  	  
+	  	  	  _animateCaption(currentSlide);
 	  	  	  
 	  	  };
 
 	  	  var move_next_timer = setInterval(function(){
 	  	  		_moveNext();
-	  	    }, 5000);
+	  	    }, _slideInterval);
 
 	  	 var _nextSlideFun = function(){
 	  	 	  move_next_timer = setInterval(function(){
 	  	  		_moveNext();
-	  	    }, 5000);
+	  	    }, _slideInterval);
 	  	 }
 	  	 
 
@@ -109,11 +126,15 @@
 	  	  		 _movePrev();
 	  	  	   
 	  	  	   _nextSlideFun();
-	  	  })
+	  	  });
+
+
+	  	   _animateCaption(currentSlide);
 
 		};
 
 		slideFun();
+
 		return $this;
 		
 	};

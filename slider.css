@@ -48,7 +48,18 @@ table {
 }
 
 /* Global styles */
-
+.customStyle{
+	background-color: rgba(0,0,0,0.8);
+	padding:15px 20px;
+	margin-top: -20px;
+}
+.customStyle h3{
+	color: #FFF;
+	font-family: 'Helvetica';
+	text-transform: uppercase;
+	font-size: 2vw;
+	
+}
 /* Plugin styles */
 .res_slider_wrap{
 	overflow: hidden;
@@ -59,4 +70,31 @@ table {
 }
 .res_single_slide{
 	float: left;
+	position: relative;
+}
+.res_caption{
+	position: absolute;
+	top: 50%;
+	z-index: 3;
+	left: 30px;
+	opacity: 0;
+	-webkit-transform: translate(100px, 0);
+	   -moz-transform: translate(100px, 0);
+	    -ms-transform: translate(100px, 0);
+	     -o-transform: translate(100px, 0);
+	        transform: translate(100px, 0);
+	
+	-webkit-transition: all 1s ease;
+	   -moz-transition: all 1s ease;
+	    -ms-transition: all 1s ease;
+	     -o-transition: all 1s ease;
+	        transition: all 1s ease;
+}
+.res_active_caption{
+	-webkit-transform: translate(0, 0);
+	   -moz-transform: translate(0, 0);
+	    -ms-transform: translate(0, 0);
+	     -o-transform: translate(0, 0);
+	        transform: translate(0, 0);
+	    opacity: 1;
 }
