@@ -60,6 +60,15 @@
 	  	  	  }, _transitionSpeed);
 	  	  }
 
+	  	  var _kenBurnEffect = function(currentSlide){
+
+	  	  	 if(settings.kenburn){
+	  	  	 	ul_children.find('img').removeClass('kenburn');
+	  	  	 	ul_children.eq(currentSlide - 1).find('img').addClass('kenburn'); 
+	  	  	 }
+
+	  	  }
+
 	  	  var _moveNext = function(){
 
 	  	  	  ++currentSlide;
@@ -75,6 +84,8 @@
 	  	  	 _moveSlider(moveValue);
 
 	  	  	  _animateCaption(currentSlide);
+
+	  	  	  _kenBurnEffect(currentSlide);
 	  	  	 
 	  	  };
 
@@ -92,6 +103,8 @@
 	  	  	  _moveSlider(moveValue);
 
 	  	  	  _animateCaption(currentSlide);
+
+	  	  	   _kenBurnEffect(currentSlide);
 	  	  	  
 	  	  };
 
@@ -130,7 +143,7 @@
 
 
 	  	   _animateCaption(currentSlide);
-
+	  	   _kenBurnEffect(currentSlide);
 		};
 
 		slideFun();

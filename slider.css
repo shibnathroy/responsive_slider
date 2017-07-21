@@ -67,10 +67,29 @@ table {
 .res_slider_ul img{
 	max-width: 100%;
 	height: auto;
+	-webkit-transition: all 14s ease;
+	   -moz-transition: all 14s ease;
+	    -ms-transition: all 14s ease;
+	     -o-transition: all 14s ease;
+	        transition: all 14s ease;
+	-webkit-transform-origin: right bottom;
+	   -moz-transform-origin: right bottom;
+	    -ms-transform-origin: right bottom;
+	     -o-transform-origin: right bottom;
+	        transform-origin: right bottom;
+}
+.res_slider_ul img.kenburn{
+	-webkit-transform: scale(1.4) translate(20px, 20px);
+	   -moz-transform: scale(1.4) translate(20px, 20px);
+	    -ms-transform: scale(1.4) translate(20px, 20px);
+	     -o-transform: scale(1.4) translate(20px, 20px);
+	        transform: scale(1.4) translate(20px, 20px);
+	    
 }
 .res_single_slide{
 	float: left;
 	position: relative;
+	overflow: hidden;
 }
 .res_caption{
 	position: absolute;
